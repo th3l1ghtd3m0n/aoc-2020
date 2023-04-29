@@ -1,47 +1,40 @@
+// O_o
 fn main()
 {
     // Part 1
-    let text1 = std::fs::read_to_string("input1.txt").unwrap();
-    let input1 = text1.split('\n')
+    let text = std::fs::read_to_string("example_input.txt").unwrap();
+    let mut input = text.split('\n')
         .filter(|x| !x.is_empty())
         .map(|y| y.parse::<i32>().unwrap())
         .collect::<Vec<_>>();
 
-    let input1_len = input1.len();
+    let input_len = input.len();
+    input.sort();
 
-    for i in 0..input1_len - 1
+    for i in 0..input_len - 1 
     {
-        for j in i + 1..input1_len 
+        if let Ok(j) = input.binary_search(&(2020 - input[i]))
         {
-            if input1[i] + input1[j] == 2020
+            if i != j
             {
-                print!("- Part 1:\n");
-                println!("[+] {}\n", input1[i] * input1[j]);
+                println!("- Part 1:");
+                println!("[+] {}\n", input[i] * input[j]);
                 break;
             }
         }
     }
-
     // Part 2
-    let text2 = std::fs::read_to_string("input2.txt").unwrap();
-    let input2 = text2.split('\n')
-        .filter(|x| !x.is_empty())
-        .map(|y| y.parse::<i32>().unwrap())
-        .collect::<Vec<_>>();
-
-    let input2_len = input2.len();
-
-    for i in 0..input2_len - 2 
+    for i in 0..input_len - 1
     {
-        for j in i + 1..input2_len - 1
+        for j in i + 1..input_len 
         {
-            for k in j + 1..input2_len 
+            if let Ok(k) = input.binary_search(&(2020 - input[i] - input[j]))
             {
-                if input2[i] + input2[j] + input2[k] == 2020 
+                if j != k
                 {
-                    print!("- Part 2:\n");
-                    println!("[+] {}", input2[i] * input2[j] * input2[k]);
-                    break;
+                    println!("- Part 2:");
+                    println!("[+] {}", input[i] * input[j] * input[k]);
+                    return;
                 }
             }
         }
