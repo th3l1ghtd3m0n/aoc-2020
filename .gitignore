@@ -1,6 +1,10 @@
 # apps
 response
 
+# another files
+*.hi
+*.o
+
 # useless packages
 node_modules
 *.json
