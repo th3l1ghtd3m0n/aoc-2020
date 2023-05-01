@@ -4,6 +4,7 @@ response
 # another files
 *.hi
 *.o
+*.class
 
 # useless packages
 node_modules
