@@ -5,6 +5,7 @@ response
 *.hi
 *.o
 *.class
+*.dot
 
 # useless packages
 node_modules
