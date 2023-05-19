@@ -6,6 +6,11 @@ response
 *.o
 *.class
 *.dot
+*.cmi
+*.cmo
+*.cmx
+*.native
+*.byte
 
 # useless packages
 node_modules
